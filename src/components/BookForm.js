@@ -1,24 +1,54 @@
-import { useAddBookMutation } from "@/features/api/apiSlice";
-import React, { useState } from "react";
+import {
+  useAddBookMutation,
+  useEditBookMutation,
+} from "@/features/api/apiSlice";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
-const BookForm = () => {
-  const [addBook, { data, isSuccess, isError }] = useAddBookMutation();
-  const [bookData, setBookData] = useState({
-    name: "",
-    author: "",
-    thumbnail: "",
-    price: "",
-    rating: "",
-    featured: false,
-  });
+const initialBookData = {
+  name: "",
+  author: "",
+  thumbnail: "",
+  price: "",
+  rating: "",
 
-  const handleSubmit = (e) => {
+  featured: false,
+};
+
+const BookForm = ({ id, bookData }) => {
+  const router = useRouter();
+  const editRoute = router.asPath.includes("edit");
+
+  const [addBook, { data, isSuccess: addSuccess, isError }] =
+    useAddBookMutation(initialBookData);
+  const [editBook, { isSuccess: editSuccess }] = useEditBookMutation();
+
+  const [formBookData, setFormBookData] = useState(initialBookData);
+
+  const handleAddBook = (e) => {
     e.preventDefault();
-    addBook(bookData);
+    addBook(formBookData);
   };
-  
+
+  const handleEditBook = (e) => {
+    e.preventDefault();
+    editBook({ id, data: formBookData });
+  };
+
+  // effect for setting form data
+  useEffect(() => {
+    if (bookData?.id) {
+      setFormBookData(bookData);
+    } else {
+      initialBookData;
+    }
+  }, [bookData?.id, bookData]);
+
   return (
-    <form className="book-form" onSubmit={handleSubmit}>
+    <form
+      className="book-form"
+      onSubmit={editRoute ? handleEditBook : handleAddBook}
+    >
       <div className="space-y-2">
         <label htmlFor="lws-bookName">Book Name</label>
         <input
@@ -27,8 +57,9 @@ const BookForm = () => {
           type="text"
           id="lws-bookName"
           name="name"
+          value={formBookData?.name}
           onChange={(e) =>
-            setBookData((prev) => ({
+            setFormBookData((prev) => ({
               ...prev,
               name: e.target.value,
             }))
@@ -43,8 +74,9 @@ const BookForm = () => {
           type="text"
           id="lws-author"
           name="author"
+          value={formBookData?.author}
           onChange={(e) =>
-            setBookData((prev) => ({
+            setFormBookData((prev) => ({
               ...prev,
               author: e.target.value,
             }))
@@ -59,8 +91,9 @@ const BookForm = () => {
           type="text"
           id="lws-thumbnail"
           name="thumbnail"
+          value={formBookData?.thumbnail}
           onChange={(e) =>
-            setBookData((prev) => ({
+            setFormBookData((prev) => ({
               ...prev,
               thumbnail: e.target.value,
             }))
@@ -76,8 +109,9 @@ const BookForm = () => {
             type="number"
             id="lws-price"
             name="price"
+            value={formBookData?.price}
             onChange={(e) =>
-              setBookData((prev) => ({
+              setFormBookData((prev) => ({
                 ...prev,
                 price: e.target.value,
               }))
@@ -94,8 +128,9 @@ const BookForm = () => {
             name="rating"
             min={1}
             max={5}
+            value={formBookData?.rating}
             onChange={(e) =>
-              setBookData((prev) => ({
+              setFormBookData((prev) => ({
                 ...prev,
                 rating: e.target.value,
               }))
@@ -109,8 +144,9 @@ const BookForm = () => {
           type="checkbox"
           name="featured"
           className="w-4 h-4"
+          checked={formBookData?.featured}
           onChange={(e) =>
-            setBookData((prev) => ({
+            setFormBookData((prev) => ({
               ...prev,
               featured: e.target.checked,
             }))

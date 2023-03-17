@@ -20,7 +20,7 @@ const PageList = () => {
         className={`${
           router.pathname === "/add-book" && "font-semibold"
         } cursor-pointer`}
-        href="add-book"
+        href="/add-book"
         id="lws-addBook"
       >
         <li>Add Book</li>

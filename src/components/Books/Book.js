@@ -16,7 +16,7 @@ const Book = ({ book }) => {
             featured
           </span>
           <div className="text-gray-500 space-x-2">
-            <Link href={`edit/1`}>
+            <Link href={`edit/${id}`}>
               <button className="lws-edit">
                 <svg
                   fill="none"

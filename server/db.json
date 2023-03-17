@@ -4,9 +4,9 @@
       "name": "Slow Horses (Deluxe Edition)",
       "author": "Mick Herron",
       "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
-      "price": 14,
-      "rating": 3,
-      "featured": false,
+      "price": "16",
+      "rating": "4",
+      "featured": true,
       "id": 1
     },
     {
@@ -35,6 +35,15 @@
       "rating": "5",
       "featured": true,
       "id": 5
+    },
+    {
+      "name": "The Last Thing He Told Me: A Novel",
+      "author": "Mick Herron",
+      "thumbnail": "https://allthatsinteresting.com/wordpress/wp-content/uploads/2019/11/age-of-augustus-cover.png",
+      "price": "445",
+      "rating": "5",
+      "featured": true,
+      "id": 6
     }
   ]
 }

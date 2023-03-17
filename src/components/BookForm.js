@@ -44,6 +44,15 @@ const BookForm = ({ id, bookData }) => {
     }
   }, [bookData?.id, bookData]);
 
+  // to home page
+  useEffect(() => {
+    if (!editRoute && addSuccess) {
+      router.push("/");
+    } else if (editRoute && editSuccess) {
+      router.push("/");
+    }
+  }, [addSuccess, editSuccess, editRoute, router]);
+
   return (
     <form
       className="book-form"

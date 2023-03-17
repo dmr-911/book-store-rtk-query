@@ -5,7 +5,7 @@ import React from "react";
 const Book = ({ book }) => {
   const { id, name, author, thumbnail, featured, rating, price } = book || {};
 
-  const [deleteBook, { isSuccess }] = useDeleteBookMutation();
+  const [deleteBook, {}] = useDeleteBookMutation();
 
   const handleDelete = () => {
     deleteBook(id);

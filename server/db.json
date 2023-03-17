@@ -26,6 +26,15 @@
       "rating": 4,
       "featured": true,
       "id": 4
+    },
+    {
+      "name": "The age of augustus",
+      "author": "Laura Dave",
+      "thumbnail": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSuJ_yewMdULCJT15hAwyU-OikRIU0GC6yPuUyaBcEk08yEMc5E",
+      "price": "45",
+      "rating": "5",
+      "featured": true,
+      "id": 5
     }
   ]
 }

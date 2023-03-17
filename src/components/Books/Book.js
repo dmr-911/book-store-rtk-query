@@ -1,8 +1,16 @@
+import { useDeleteBookMutation } from "@/features/api/apiSlice";
 import Link from "next/link";
 import React from "react";
 
 const Book = ({ book }) => {
   const { id, name, author, thumbnail, featured, rating, price } = book || {};
+
+  const [deleteBook, { isSuccess }] = useDeleteBookMutation();
+
+  const handleDelete = () => {
+    deleteBook(id);
+  };
+
   return (
     <div className="book-card">
       <img
@@ -33,7 +41,7 @@ const Book = ({ book }) => {
                 </svg>
               </button>
             </Link>
-            <button className="lws-deleteBook">
+            <button className="lws-deleteBook" onClick={handleDelete}>
               <svg
                 fill="none"
                 viewBox="0 0 24 24"

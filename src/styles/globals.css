@@ -1088,6 +1088,11 @@ input[type="number"]:focus {
   color: rgb(88 80 236 / var(--tw-text-opacity));
 }
 
+
+.visibility-hidden{
+  visibility: hidden;
+}
+
 @media (min-width: 768px) {
   .md\:flex {
     display: flex;

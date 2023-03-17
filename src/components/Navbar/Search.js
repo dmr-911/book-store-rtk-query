@@ -1,6 +1,15 @@
+import { searchBooks } from "@/features/filter/filterSlice";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const Search = () => {
+  const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    if (e.target.value || e.target.value !== " ") {
+      dispatch(searchBooks(e.target.value));
+    }
+  };
   return (
     <form className="flex items-center">
       <div className="group relative rounded-md bg-white">
@@ -21,6 +30,7 @@ const Search = () => {
           placeholder="Filter books..."
           className="search"
           id="lws-search"
+          onChange={handleSearch}
         />
       </div>
     </form>

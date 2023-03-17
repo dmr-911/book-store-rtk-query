@@ -62,7 +62,7 @@ const Book = ({ book }) => {
           <h4 className="lws-book-name">{name}</h4>
           <p className="lws-author">{author}</p>
           <div className="lws-stars">
-            {[...Array(Number(rating))].map((rate, i) => (
+            {/* {[...Array(Number(rating))].map((rate, i) => (
               <React.Fragment key={i}>
                 <svg viewBox="0 0 20 20" fill="currentColor" className="star">
                   <path
@@ -72,7 +72,7 @@ const Book = ({ book }) => {
                   />
                 </svg>
               </React.Fragment>
-            ))}
+            ))} */}
           </div>
           <p className="lws-price">BDT {price}</p>
         </div>

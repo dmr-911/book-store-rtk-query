@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-const Head = () => {
+const HeadCompo = () => {
   return (
     <Head>
       <meta charset="UTF-8" />
@@ -12,4 +12,4 @@ const Head = () => {
   );
 };
 
-export default Head;
+export default HeadCompo;

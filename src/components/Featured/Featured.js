@@ -1,6 +1,6 @@
-import { filterBooks } from "@/features/filter/filterSlice";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { filterBooks } from "../../features/filter/filterSlice";
 
 const Featured = () => {
   const { filter } = useSelector((state) => state.filter);

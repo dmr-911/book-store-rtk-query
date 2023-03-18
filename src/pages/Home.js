@@ -1,8 +1,6 @@
-
-import "@/styles/Home.module.css";
-import Layout from "@/components/Layout";
-import Books from "@/components/Books/Books";
-import Featured from "@/components/Featured/Featured";
+import Books from "../components/Books/Books";
+import Featured from "../components/Featured/Featured";
+import Layout from "../components/Layout";
 
 export default function Home() {
   return (

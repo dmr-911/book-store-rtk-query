@@ -1,6 +1,6 @@
-import { searchBooks } from "@/features/filter/filterSlice";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { searchBooks } from "../../features/filter/filterSlice";
 
 const Search = () => {
   const dispatch = useDispatch();

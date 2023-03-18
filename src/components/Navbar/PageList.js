@@ -1,26 +1,24 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const PageList = () => {
-  const router = useRouter();
-
+  const location = useLocation();
   return (
     <ul className="hidden md:flex items-center space-x-6">
       <Link
         className={`${
-          router.pathname === "/" && "font-semibold"
+          location.pathname === "/" && "font-semibold"
         } cursor-pointer`}
-        href="/"
+        to="/"
         id="lws-bookStore"
       >
         <li>Book Store</li>
       </Link>
       <Link
         className={`${
-          router.pathname === "/add-book" && "font-semibold"
+          location.pathname === "/add-book" && "font-semibold"
         } cursor-pointer`}
-        href="/add-book"
+        to="/add-book"
         id="lws-addBook"
       >
         <li>Add Book</li>

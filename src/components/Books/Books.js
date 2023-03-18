@@ -1,9 +1,9 @@
-import { useGetBooksQuery } from "@/features/api/apiSlice";
 import React from "react";
-import { useSelector } from "react-redux";
 import Error from "../ui/Error";
 import Loading from "../ui/Loading";
 import Book from "./Book";
+import { useGetBooksQuery } from "../../features/api/apiSlice";
+import { useSelector } from "react-redux";
 
 const Books = () => {
   const { data: books, isLoading, isError } = useGetBooksQuery();

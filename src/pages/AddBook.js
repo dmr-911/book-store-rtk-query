@@ -1,6 +1,6 @@
-import BookForm from "@/components/BookForm";
-import Layout from "@/components/Layout";
 import React from "react";
+import BookForm from "../components/BookForm";
+import Layout from "../components/Layout";
 
 const AddBook = () => {
   return (

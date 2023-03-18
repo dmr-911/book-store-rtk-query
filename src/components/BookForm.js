@@ -1,9 +1,9 @@
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   useAddBookMutation,
   useEditBookMutation,
-} from "@/features/api/apiSlice";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+} from "../features/api/apiSlice";
 
 const initialBookData = {
   name: "",
@@ -16,8 +16,12 @@ const initialBookData = {
 };
 
 const BookForm = ({ id, bookData }) => {
-  const router = useRouter();
-  const editRoute = router.asPath.includes("edit");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const editRoute = location.pathname?.includes("edit");
+
+  console.log(editRoute);
 
   const [addBook, { data, isSuccess: addSuccess, isError }] =
     useAddBookMutation(initialBookData);
@@ -40,18 +44,18 @@ const BookForm = ({ id, bookData }) => {
     if (bookData?.id) {
       setFormBookData(bookData);
     } else {
-      initialBookData;
+      setFormBookData(initialBookData);
     }
   }, [bookData?.id, bookData]);
 
   // to home page
   useEffect(() => {
     if (!editRoute && addSuccess) {
-      router.push("/");
+      navigate("/");
     } else if (editRoute && editSuccess) {
-      router.push("/");
+      navigate("/");
     }
-  }, [addSuccess, editSuccess, editRoute, router]);
+  }, [addSuccess, editSuccess, editRoute, navigate]);
 
   return (
     <form

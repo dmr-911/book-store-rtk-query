@@ -1,6 +1,6 @@
-import { useDeleteBookMutation } from "@/features/api/apiSlice";
-import Link from "next/link";
 import React from "react";
+import { useDeleteBookMutation } from "../../features/api/apiSlice";
+import { Link } from "react-router-dom";
 
 const Book = ({ book }) => {
   const { id, name, author, thumbnail, featured, rating, price } = book || {};
@@ -24,7 +24,7 @@ const Book = ({ book }) => {
             featured
           </span>
           <div className="text-gray-500 space-x-2">
-            <Link href={`edit/${id}`}>
+            <Link to={`edit/${id}`}>
               <button className="lws-edit">
                 <svg
                   fill="none"
@@ -62,7 +62,7 @@ const Book = ({ book }) => {
           <h4 className="lws-book-name">{name}</h4>
           <p className="lws-author">{author}</p>
           <div className="lws-stars">
-            {/* {[...Array(Number(rating))].map((rate, i) => (
+            {[...Array(Number(rating))].map((rate, i) => (
               <React.Fragment key={i}>
                 <svg viewBox="0 0 20 20" fill="currentColor" className="star">
                   <path
@@ -72,7 +72,7 @@ const Book = ({ book }) => {
                   />
                 </svg>
               </React.Fragment>
-            ))} */}
+            ))}
           </div>
           <p className="lws-price">BDT {price}</p>
         </div>
